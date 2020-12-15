@@ -4,6 +4,9 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
+body, input, label, h1, a, p, span {
+    font-family: 나눔고딕, NanumGothic, "맑은 고딕", "MalgunGhotic", sans-serif;
+}
 body {
     display: -webkit-box;
     display: -moz-box;
@@ -70,6 +73,7 @@ h1.title {
     margin: 0;
     cursor: pointer;
     position: relative;
+    overflow: visible;
 }
 .generate #search {
     margin-bottom: 20px;
@@ -94,6 +98,22 @@ h1.title {
 #search.go .touch_this {
     opacity: 0;
     display: block;
+    -webkit-animation-delay: .3s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: ripple;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-delay: .3s;
+    -moz-animation-duration: 1s;
+    -moz-animation-name: ripple;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-delay: .3s;
+    -ms-animation-duration: 1s;
+    -ms-animation-name: ripple;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-delay: .3s;
+    -o-animation-duration: 1s;
+    -o-animation-name: ripple;
+    -o-animation-iteration-count: infinite;
     animation-delay: .3s;
 	animation-duration: 1s;
     animation-name: ripple;
@@ -118,6 +138,22 @@ h1.title {
     bottom: -90px;
     opacity: 0;
     display: block;
+    -webkit-animation-delay: .3s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: fadeup;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-delay: .3s;
+    -moz-animation-duration: 1s;
+    -moz-animation-name: fadeup;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-delay: .3s;
+    -ms-animation-duration: 1s;
+    -ms-animation-name: fadeup;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-delay: .3s;
+    -o-animation-duration: 1s;
+    -o-animation-name: fadeup;
+    -o-animation-fill-mode: forwards;
     animation-delay: .3s;
 	animation-duration: 1s;
     animation-name: fadeup;
@@ -213,27 +249,39 @@ h1.title {
 }
 @keyframes fadeup {
     from {
-        bottom: -90px;
+        filter:alpha(opacity=0);
+        -moz-opacity:0;
+        -khtml-opacity: 0;
         opacity: 0;
+        bottom: -90px;
     }
     to {
-        bottom: -62px;
+        filter:alpha(opacity=100);
+        -moz-opacity:1;
+        -khtml-opacity: 1;
         opacity: 1;
+        bottom: -62px;
     }
 }
 @keyframes ripple {
     from {
+        filter:alpha(opacity=100);
+        -moz-opacity:1;
+        -khtml-opacity: 1;
+        opacity: 1;
         width: 0;
         height: 0;
         left: 29px;
         top: 29px;
-        opacity: 1;
     }
     to {
+        filter:alpha(opacity=0);
+        -moz-opacity:0;
+        -khtml-opacity: 0;
+        opacity: 0;
         width: 124px;
         height: 124px;
         left: -33px;
         top: -33px;
-        opacity: 0;
     }
 }
