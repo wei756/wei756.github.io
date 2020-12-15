@@ -49,7 +49,7 @@
         function drawTyping() {
             form.value = query.substring(0, ++i);
             if (i < query.length)
-                setTimeout(() => {drawTyping()}, 50);
+                setTimeout(drawTyping, 50);
             else
                 search.classList.add('go');
         }
@@ -59,7 +59,7 @@
             body.classList.add('generate');
         }
         
-        search.addEventListener('submit', e => {
+        search.addEventListener('submit', function(e) {
             e.preventDefault();
 
             if (query != null) {
