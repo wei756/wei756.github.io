@@ -3,14 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>검색을 하세요 검색을</title>
+    <title>무엇이든 알려드립니다</title>
 </head>
 <body>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?1">
+    <h1 class="title">무엇이든 알려드립니다</h1>
     <form action="" id="search">
         <span class="logo"></span>
         <input type="text" name="query" id="search_query">
-        <input type="submit" value="검색">
+        <button type="submit">
+            <span class="touch_do_this">누르세요</span>
+            <div class="touch_this"></div>
+        </button>
     </form>
+    <script>
+        var query = getParams()['q'];
+        var engine = getParams()['e'];
+
+        var search = document.querySelector('#search');
+        var form = document.querySelector('#search_query');
+
+
+        var i = 0;
+        function drawTyping() {
+            form.value = query.substring(0, ++i);
+            if (i < query.length)
+                setTimeout(() => {drawTyping()}, 50);
+            else
+                search.classList.add('go');
+        }
+        if (query != null) {
+            drawTyping();
+        }
+        
+        search.addEventListener('submit', e => {
+            e.preventDefault();
+
+            if (query == null)
+                query = form.value;
+
+            if (engine === 'naver')
+                location.href = 'https://search.naver.com/search.naver?query=' + query;
+            else
+                location.href = 'https://www.google.co.kr/search?q=' + query;
+        });
+
+        function getParams() {
+
+            var param = new Array();
+        
+            var url = decodeURIComponent(location.href);
+            url = decodeURIComponent(url);
+        
+            var params;
+            params = url.substring( url.indexOf('?')+1, url.length );
+            params = params.split("&");
+        
+            var size = params.length;
+            var key, value;
+            for(var i=0 ; i < size ; i++) {
+                key = params[i].split("=")[0];
+                value = params[i].split("=")[1];
+        
+                param[key] = value;
+            }
+        
+            return param;
+        }
+    </script>
 </body>
 </html>
