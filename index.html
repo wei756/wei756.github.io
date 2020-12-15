@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css?2">
     <h1 class="title">무엇이든 알려드립니다</h1>
     <form action="" id="search">
-        <input type="text" name="query" id="search_query">
+        <p id="search_query"><span id="query_string"></span><span id="query_cursor"></span></p>
         <button type="submit">
             <span class="touch_do_this"><img src="keyboard_arrow_up-black-18dp.svg" alt="^"/><br/>누르세요</span>
             <div class="touch_this"></div>
@@ -39,14 +39,43 @@
 
         var body = document.querySelector('body')
         var search = document.getElementById('search');
-        var form = document.getElementById('search_query');
+        var form = document.getElementById('query_string');
+        var formime = document.getElementById('query_cursor');
         var generate = document.querySelector('.generate_container');
         var geneform = document.getElementById('generated_url');
         var enginenaver = document.getElementById('engine_naver');
 
+        const k_cho = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ','ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+        function geneHangul(cho, jung, jong) {
+            return String.fromCharCode(0xAC00 + (cho * 21 + jung) * 28 + jong);
+        }
         var i = 0;
         function drawTyping() {
-            form.value = query.substring(0, ++i);
+
+            let charCode = query.charCodeAt(i);
+
+            if (charCode >= 0xAC00) { // 한글이면
+
+                let cho = Math.floor((charCode - 0xAC00) / 28 / 21);
+                let jung = Math.floor(((charCode - 0xAC00) / 28) % 21);
+                let jong = (charCode - 0xAC00) % 28;
+                if ((form.innerText + formime.innerText).length == i) { // 조합 시작 전
+                    form.innerText = query.substring(0, i);
+                    formime.innerText = k_cho[cho]; // 초성
+                } else { // 조합 중
+                    if (formime.innerText.charCodeAt() < 0xAC00) { // 초성->중성
+                        formime.innerText = geneHangul(cho, jung, 0); // 초성+중성
+                        if(jong == 0) // 종성 없으면 다음으로
+                            i++;
+                    } else {// 중성->종성
+                        formime.innerText = geneHangul(cho, jung, jong); // 초성+중성+종성
+                        i++; // 다음으로
+                    }
+                }
+            } else {
+                form.innerText = query.substring(0, ++i);
+                formime.innerText = '';
+            }
             if (i < query.length)
                 setTimeout(drawTyping, 50);
             else
@@ -68,7 +97,7 @@
                     location.href = 'https://www.google.co.kr/search?q=' + query;
 
             } else { // generating page
-                geneform.value = 'https://wei756.github.io/?q=' + encodeURIComponent(form.value);
+                geneform.value = 'https://wei756.github.io/?q=' + encodeURIComponent(form.innerText);
 
                 if (enginenaver.checked == true)
                     geneform.value += '&e=naver';
