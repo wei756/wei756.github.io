@@ -6,9 +6,10 @@
     <title>무엇이든 알려드립니다</title>
 </head>
 <body>
-    <link rel="stylesheet" href="style.css?2">
+    <link rel="stylesheet" href="style.css?3">
     <h1 class="title">무엇이든 알려드립니다</h1>
     <form action="" id="search">
+        <input type="text" name="query" id="query_input"/>
         <p id="search_query"><span id="query_string"></span><span id="query_cursor"></span></p>
         <button type="submit">
             <span class="touch_do_this"><img src="keyboard_arrow_up-black-18dp.svg" alt="^"/><br/>누르세요</span>
@@ -39,6 +40,7 @@
 
         var body = document.querySelector('body')
         var search = document.getElementById('search');
+        var forminput = document.getElementById('query_input');
         var form = document.getElementById('query_string');
         var formime = document.getElementById('query_cursor');
         var generate = document.querySelector('.generate_container');
@@ -97,7 +99,7 @@
                     location.href = 'https://www.google.co.kr/search?q=' + query;
 
             } else { // generating page
-                geneform.value = 'https://wei756.github.io/?q=' + encodeURIComponent(form.innerText);
+                geneform.value = 'https://wei756.github.io/?q=' + encodeURIComponent(forminput.value);
 
                 if (enginenaver.checked == true)
                     geneform.value += '&e=naver';

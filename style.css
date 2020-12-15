@@ -43,6 +43,7 @@ h1.title {
     max-width: 530px;
     border: 2px solid #19ce60;
 }
+#query_input,
 #search_query {
     width: auto;
     -webkit-box-flex: 1;
@@ -62,6 +63,15 @@ h1.title {
     border: 0;
     white-space: pre;
     overflow: hidden;
+}
+#query_input {
+    display: none;
+}
+.generate #search_query {
+    display: none;
+}
+.generate #query_input {
+    display: inline;
 }
 #search_query #query_cursor {
     display: inline-block;
