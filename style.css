@@ -4,6 +4,10 @@ html, body {
     padding: 0;
 }
 body {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,6 +29,10 @@ h1.title {
     text-shadow: 2px 2px rgba(0, 0, 0, .1);
 }
 #search {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     margin: 0 auto 64px;
     width: 100%;
@@ -33,7 +41,11 @@ h1.title {
 }
 #search_query {
     width: auto;
-    flex: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1; 
     height: 24px;
     padding: 13px 15px;
     margin: 1px;
