@@ -178,6 +178,30 @@ h1.title {
     animation-name: fadeup;
     animation-fill-mode: forwards;
 }
+#search.go .touch_do_this > span {
+	position: relative;
+	top: 0px;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-duration: 3.5s;
+    -webkit-animation-name: tween;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-delay: 0s;
+    -moz-animation-duration: 3.5s;
+    -moz-animation-name: tween;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-delay: 0s;
+    -ms-animation-duration: 3.5s;
+    -ms-animation-name: tween;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-delay: 0s;
+    -o-animation-duration: 3.5s;
+    -o-animation-name: tween;
+    -o-animation-iteration-count: infinite;
+    animation-delay: 0s;
+	animation-duration: 3.5s;
+    animation-name: tween;
+    animation-iteration-count: infinite;
+}
 .generate_container {
     text-align: center;
     display: none;
@@ -243,6 +267,29 @@ h1.title {
 .footer a {
 	color: rgba(0, 0, 0, .6);
 	text-decoration: none;
+}
+@keyframes tween {
+	0% {
+	    top: 0px;
+	}
+	90% {
+	    top: 0px;
+	}
+	92% {
+	    top: 2px;
+	}
+	94% {
+	    top: -2px;
+	}
+	96% {
+	    top: 2px;
+	}
+	98% {
+	    top: -2px;
+	}
+	100% {
+	    top: 0px;
+	}
 }
 @media only screen and (max-width:620px) {
 	body{
