@@ -115,66 +115,6 @@ h1.title {
     }
     #search_query {
     	min-width: 0;
-        height: 24px;
-        padding: 13px 15px;
-        margin: 1px;
-        background-color: #fff;
-        font-size: 18px;
-        line-height: 24px;
-        color: #000;
-        font-weight: 700;
-        outline: 0;
-        border: 0;
-    }
-    #search button[type="submit"] {
-        background-image: url(search-white-18dp.svg);
-        background-size: 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 56px;
-        height: 56px;
-        background-color: #19ce60;
-        border: 0;
-        margin: 0;
-        cursor: pointer;
-        position: relative;
-    }
-    
-    .touch_this {
-        opacity: 0;
-        background: rgba(0, 0, 0, 0.2);
-        position: absolute;
-        width: 124px;
-        height: 124px;
-        left: -33px;
-        top: -33px;
-                border-radius: 50%;
-           -moz-border-radius: 50%;
-         -khtml-border-radius: 50%;
-        -webkit-border-radius: 50%;
-    }
-    #search.go .touch_this {
-        animation-delay: .3s;
-        animation-duration: 1s;
-        animation-name: ripple;
-        animation-iteration-count: infinite;
-    }
-    .touch_do_this {
-        opacity: 0;
-        color: #555;
-        position: absolute;
-        left: -20px;
-        bottom: -52px;
-        width: 100px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 500;
-    }
-    #search.go .touch_do_this {
-        animation-delay: .3s;
-        animation-duration: 1s;
-        animation-name: fadeup;
-        animation-fill-mode: forwards;
     }
 }
 @keyframes fadeup {
