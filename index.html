@@ -6,7 +6,7 @@
     <title>무엇이든 알려드립니다</title>
 </head>
 <body>
-    <link rel="stylesheet" href="style.css?1">
+    <link rel="stylesheet" href="style.css?2">
     <h1 class="title">무엇이든 알려드립니다</h1>
     <form action="" id="search">
         <span class="logo"></span>
@@ -16,13 +16,34 @@
             <div class="touch_this"></div>
         </button>
     </form>
+    <div class="generate_container">
+        <p class="engine_selector">
+            <input type="radio" name="engine" id="engine_google" value="google" checked>
+            <label for="engine_google">Google</label>
+            <input type="radio" name="engine" id="engine_naver" value="naver">
+            <label for="engine_naver">네이버</label>
+        </p>
+        <div class="url">
+            <button onclick="document.getElementById('generated_url').select();document.execCommand('copy');alert('링크가 복사되었습니다.');" class="copy"></button>
+            <input type="text" name="" id="generated_url">
+        </div>
+        <h1>사용하는 법</h1>
+        <p><span class="num">1. </span>검색어를 입력하고 우측 생성 버튼을 눌러 주세요.</p>
+        <p><span class="num">2. </span>링크를 복사하여 질문한 사람에게 보여주세요.</p>
+    </div>
+    <span class="footer">
+        <a href="/">나만의 링크 만들기</a>&nbsp;|&nbsp;<a href="https://github.com/wei756">맹근이 wei756</a>
+    </span>
     <script>
         var query = getParams()['q'];
         var engine = getParams()['e'];
 
-        var search = document.querySelector('#search');
-        var form = document.querySelector('#search_query');
-
+        var body = document.querySelector('body')
+        var search = document.getElementById('search');
+        var form = document.getElementById('search_query');
+        var generate = document.querySelector('.generate_container');
+        var geneform = document.getElementById('generated_url');
+        var enginenaver = document.getElementById('engine_naver');
 
         var i = 0;
         function drawTyping() {
@@ -34,18 +55,26 @@
         }
         if (query != null) {
             drawTyping();
+        } else { // generating page
+            body.classList.add('generate');
         }
         
         search.addEventListener('submit', e => {
             e.preventDefault();
 
-            if (query == null)
-                query = form.value;
+            if (query != null) {
+                if (engine === 'naver')
+                    location.href = 'https://search.naver.com/search.naver?query=' + query;
+                else
+                    location.href = 'https://www.google.co.kr/search?q=' + query;
 
-            if (engine === 'naver')
-                location.href = 'https://search.naver.com/search.naver?query=' + query;
-            else
-                location.href = 'https://www.google.co.kr/search?q=' + query;
+            } else { // generating page
+                geneform.value = 'https://wei756.github.io/?q=' + encodeURIComponent(form.value);
+
+                if (enginenaver.checked == true)
+                    geneform.value += '&e=naver';
+
+            }
         });
 
         function getParams() {
