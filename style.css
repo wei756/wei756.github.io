@@ -71,6 +71,9 @@ h1.title {
     cursor: pointer;
     position: relative;
 }
+.generate #search {
+    margin-bottom: 20px;
+}
 .generate #search button[type="submit"] {
 	background-image: url(check-white-18dp.svg);
 }
