@@ -30,7 +30,7 @@ h1.title {
     font-size: 36px;
     font-weight: 700;
     color: #19ce60;
-    text-shadow: 1px 2px rgba(0, 0, 0, .1);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .15);
 }
 #search {
     display: -webkit-box;
@@ -140,18 +140,23 @@ h1.title {
 }
 .touch_do_this {
     display: none;
-	color: #555;
+	color: rgba(0, 0, 0, .65);
     position: absolute;
     left: -20px;
     bottom: -62px;
     width: 100px;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
 }
 .touch_do_this img {
 	display: inline-block;
-	margin-bottom: 2px;
+    margin-bottom: 2px;
+    
+    filter:alpha(opacity=65);
+    -moz-opacity:.65;
+    -khtml-opacity: .65;
+    opacity: .65;
 }
 #search.go .touch_do_this {
     bottom: -90px;
@@ -265,7 +270,7 @@ h1.title {
 	bottom: 64px;
 }
 .footer a {
-	color: rgba(0, 0, 0, .6);
+	color: rgba(0, 0, 0, .4);
 	text-decoration: none;
 }
 @keyframes tween {
@@ -276,16 +281,16 @@ h1.title {
 	    top: 0px;
 	}
 	92% {
-	    top: 2px;
+	    top: -3px;
 	}
 	94% {
-	    top: -2px;
+	    top: 1px;
 	}
 	96% {
-	    top: 2px;
+	    top: -3px;
 	}
 	98% {
-	    top: -2px;
+	    top: 1px;
 	}
 	100% {
 	    top: 0px;
