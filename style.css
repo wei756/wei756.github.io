@@ -101,14 +101,18 @@ h1.title {
 	color: #555;
     position: absolute;
     left: -20px;
-    bottom: -52px;
+    bottom: -62px;
     width: 100px;
     text-align: center;
     font-size: 16px;
     font-weight: 500;
 }
+.touch_do_this img {
+	display: inline-block;
+	margin-bottom: 2px;
+}
 #search.go .touch_do_this {
-    bottom: -80px;
+    bottom: -90px;
     opacity: 0;
     display: block;
     animation-delay: .3s;
@@ -206,11 +210,11 @@ h1.title {
 }
 @keyframes fadeup {
     from {
-        bottom: -80px;
+        bottom: -90px;
         opacity: 0;
     }
     to {
-        bottom: -52px;
+        bottom: -62px;
         opacity: 1;
     }
 }
