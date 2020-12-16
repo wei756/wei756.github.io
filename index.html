@@ -68,7 +68,7 @@
 
             let charCode = query.charCodeAt(i);
 
-            if (charCode >= 0xAC00) { // 한글이면
+            if (charCode >= 0xAC00 && charCode <= 0xD7A3) { // 한글이면
 
                 let cho = Math.floor((charCode - 0xAC00) / 28 / 21);
                 let jung = Math.floor(((charCode - 0xAC00) / 28) % 21);
